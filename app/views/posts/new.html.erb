@@ -1,5 +1,14 @@
 <h1>Create a new blog post</h1>
 
+<% if @post.errors.any? %>
+<h2>These errors prevented blog from being created</h2>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @post do |f| %>
   <p>
     <%= f.label :title %>
@@ -16,5 +25,5 @@
   <p>
     <%= f.submit %>
   </p>
-  
+
 <% end %>
