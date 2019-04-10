@@ -49,6 +49,17 @@ $navbar-default-bg: #3daedb;
   margin-top: 0;
 }
 
+.post-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.post-body {
+  border-top: 1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;

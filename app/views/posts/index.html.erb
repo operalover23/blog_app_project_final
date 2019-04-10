@@ -1,20 +1,19 @@
-<h1>List of blogs</h1>
-<p><%= link_to "Create New Blog", new_post_path %></p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-
+<h1 align="center">List of blogs</h1>
   <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.description %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Show', post_path(post) %></td>
-      <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-    </tr>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="post-title">
+          <%= link_to post.title, post_path(post) %>
+        </div>
+        <div class="post-body">
+          <%= truncate(post.description, length: 200) %>
+        </div>
+        <div class="post-actions">
+          <%= link_to "Edit blog", edit_post_path(post), class: "btn btn-xs btn-primary" %>
+          <%= link_to "Delete blog", posts_path(post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
-
-</table>
