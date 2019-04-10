@@ -1,0 +1,6 @@
+<h1 align="center">Welcome to
+  <%= @user.username %>'s blog</h1>
+
+  <h3 align="center">
+    <%= @user.username %>'s blogs</h3>
+    <%= render 'posts/post', obj: @user.posts %>
