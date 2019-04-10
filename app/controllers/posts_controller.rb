@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash[:notice] = "Blog created successfully"
+      flash[:success] = "Blog created successfully"
       redirect_to post_path(@post)
     else
       render 'new'
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def update
 
     if @post.update(post_params)
-      flash[:notice] = "Blog updated successfully"
+      flash[:success] = "Blog updated successfully"
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:notice] = "Blog successfully deleted"
+    flash[:danger] = "Blog successfully deleted"
     redirect_to posts_path
   end
 
