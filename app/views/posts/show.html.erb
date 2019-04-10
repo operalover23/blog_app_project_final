@@ -1,11 +1,10 @@
-<h1>Showing Blog</h1>
-
-<p>
-  Title: <%= @post.title %>
-</p>
-
-<p>
-  Description: <%= @post.description %>
-</p>
-<%= link_to "Edit blog", edit_post_path(@post) %> |
-<%= link_to "Back to blog list", posts_path %>
+<h2 align="center">Title: <%= @post.title %></h2>
+<div class="well col-xs-9 col-xs-offset-2">
+  <h3 class="center description"><strong>Description:</strong></h3>
+  <hr><%= simple_format(@post.description) %>
+  <div class="post-actions">
+    <%= link_to "Edit blog", edit_post_path(@post), class: "btn btn-xs btn-primary" %>
+    <%= link_to "Delete blog", posts_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
+    <%= link_to "View all blogs", posts_path, class: "btn btn-xs btn-success" %>
+  </div>
+</div>
