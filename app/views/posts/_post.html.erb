@@ -11,7 +11,7 @@
           <small>Created by: <%= post.user.username if post.user %>, <%= time_ago_in_words(post.created_at) %> ago, last updated: <%= time_ago_in_words(post.updated_at) %> ago</small>
         </div>
       </div>
-      <% if logged_in? && current_user == post.user %>
+      <% if logged_in? && (current_user == post.user || current_user.admin?) %>
       <div class="post-actions">
         <%= link_to "Edit blog", edit_post_path(post), class: "btn btn-xs btn-primary" %>
         <%= link_to "Delete blog", posts_path(post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
