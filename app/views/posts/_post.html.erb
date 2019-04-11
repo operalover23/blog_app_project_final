@@ -11,6 +11,9 @@
           <small>Created by: <%= post.user.username if post.user %>, <%= time_ago_in_words(post.created_at) %> ago, last updated: <%= time_ago_in_words(post.updated_at) %> ago</small>
         </div>
       </div>
+      <% if post.categories.any? %>
+      <p>Category: <%= render post.categories %></p>
+      <% end %>
       <% if logged_in? && (current_user == post.user || current_user.admin?) %>
       <div class="post-actions">
         <%= link_to "Edit blog", edit_post_path(post), class: "btn btn-xs btn-primary" %>
