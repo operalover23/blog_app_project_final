@@ -4,9 +4,7 @@
   <h3 align="center">
     <%= @user.username %>'s blogs</h3>
     <div class="center">
-      <%= will_paginate @user_posts %>
     </div>
     <%= render 'posts/post', obj: @user.posts %>
     <div class="center">
-        <%= will_paginate @user_posts %>
     </div>

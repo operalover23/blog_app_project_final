@@ -37,14 +37,14 @@ class CategoriesController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
     def category_params
       params.require(:category).permit(:name)
     end
 
     def require_admin
-      if !logged_in? || (logged_in? and !current_user.admin?)
+      if !logged_in? || (logged_in? && !current_user.admin?)
         flash[:danger] = "Admins only, no touching!"
         redirect_to categories_path
       end

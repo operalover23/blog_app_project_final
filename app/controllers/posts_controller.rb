@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @post.user and !current_user.admin?
+      if current_user != @post.user && !current_user.admin?
         flash[:danger] = "Invalid, can only edit and delete user's own blogs"
         redirect_to root_path
       end

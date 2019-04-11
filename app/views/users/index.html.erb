@@ -1,6 +1,5 @@
 <h1 align="center">All Bloggers</h1>
   <div align="center">
-    <%= will_paginate %>
     <% @users.each do |user| %>
       <ul class="listing">
         <div class="row">
@@ -8,7 +7,7 @@
             <li class="article-title">
               <%= link_to user.username, user_path(user) %>
             </li>
-            <li><small><%= pluralize(user.posts.count, "post") if user.post %></small></li>
+            <li><small><%= pluralize(user.posts.count, "post") if user.posts %></small></li>
             <% if logged_in? and current_user.admin? %>
             <li><%= link_to "Delete User", user_path(user), method: :delete, data: { confirm: "Are you sure?" } %></li>
             <% end %>
@@ -16,5 +15,4 @@
         </div>
       </ul>
 <% end %>
-<%= will_paginate %>
   </div>
