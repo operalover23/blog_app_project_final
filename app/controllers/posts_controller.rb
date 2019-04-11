@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -15,7 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = User.first
+    @post.user = current_user
     if @post.save
       flash[:success] = "Blog created successfully"
       redirect_to post_path(@post)
@@ -25,7 +27,6 @@ class PostsController < ApplicationController
   end
 
   def update
-
     if @post.update(post_params)
       flash[:success] = "Blog updated successfully"
       redirect_to post_path(@post)
@@ -52,4 +53,11 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :description)
     end
+
+    def require_same_user
+      if current_user != @post.user
+        flash[:danger] = "Invalid, can only edit and delete user's own blogs"
+        redirect_to root_path
+      end
+    end 
 end

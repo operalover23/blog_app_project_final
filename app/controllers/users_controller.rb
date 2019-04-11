@@ -1,4 +1,11 @@
 class UsersController < Application UsersController
+  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show]
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 5)
+  end
+
   def new
     @user = User.new
   end
@@ -14,11 +21,9 @@ class UsersController < Application UsersController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Account updated successfully"
       redirect_to posts_path
@@ -28,11 +33,22 @@ class UsersController < Application UsersController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user_posts = @user.posts.paginate(page: params[:page], per_page: 5)
   end
 
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def require_same_user
+      if current_user != @user
+        flash[:danger] = "User can only edit their account"
+        redirect_to root_path
+      end
+    end 
 end
