@@ -3,17 +3,18 @@ $navbar-default-bg: #3daedb;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 #logo {
   float: left;
   font-size: 1.2em;
-  color: #000000;
+  color: #30627e;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #fff;
+  color: black;
   text-decoration: none;
 }
 
@@ -28,7 +29,7 @@ $navbar-default-bg: #3daedb;
 }
 
 .jumbotron h1 {
-  color: #000000;
+  color: #30627e;
   text-align: center;
   margin-bottom: 30px;
   letter-spacing: -1px;
@@ -37,16 +38,16 @@ $navbar-default-bg: #3daedb;
 
 .btn-xlarge {
   font-size: 1.5em;
-  background-color: black;
+  background-color: #30627e;
 }
 
 .post-meta-details {
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid #8e8b8b;
     margin-top: 15px;
 }
 
 .post-actions {
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #8e8b8b;
   padding-top: 5px;
 }
 
@@ -81,12 +82,9 @@ $navbar-default-bg: #3daedb;
   width: auto !important;
 }
 
-
-
-
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
+  margin-top: 50px;
+  padding-top: 10px;
   border-top: 1px solid black;
   color: #777;
 }
